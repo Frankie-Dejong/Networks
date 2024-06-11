@@ -56,6 +56,6 @@ class TransformerDecoder(nn.Module):
         self._attention_weights = [[None] * len(self.blocks) for _ in range (2)]
         for i, block in enumerate(self.blocks):
             x, state = block(x, state)
-        self._attention_weights[0][i] = block.attention_1.attention.attn_weights 
-        self._attention_weights[1][i] = block.attention_2.attention.attn_weights
+            self._attention_weights[0][i] = block.attention_1.attention.attn_weights 
+            self._attention_weights[1][i] = block.attention_2.attention.attn_weights
         return self.dense(x), state
