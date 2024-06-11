@@ -1,0 +1,27 @@
+task: cifar-10
+train:
+    batch_size: 128
+    global_step: 12800
+    num_diffusion_steps: 1000
+    beta_start: 0.0001
+    beta_end: 0.02
+    beta_schedule: linear
+    lr: 0.0002
+    log_step: 1
+    eval_step: 20
+    save_step: 20
+model:
+    in_channels: 128
+    dropout: 0.1
+    image_resolution: 32
+    ch_mult:
+        - 1
+        - 2
+        - 2
+        - 2
+    num_res_blocks: 2
+    attn_resolutions: 
+        - 16
+data:
+    data_root: ./data/cifar-10
+model_path: ./cifar_test_run/checkpoints/ckpt_at_epoch_61.pkl
