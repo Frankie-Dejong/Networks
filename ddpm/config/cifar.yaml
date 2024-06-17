@@ -1,0 +1,33 @@
+data:
+  data_root: ./data/cifar-10
+exp_name: run_cifar_ddimset
+model:
+  attn_resolutions:
+  - 16
+  ch_mult:
+  - 1
+  - 1
+  - 2
+  - 2
+  dropout: 0.3
+  image_resolution: 32
+  in_channels: 128
+  num_res_blocks: 3
+model_path: ./run_cifar_ddimset/checkpoints/299/ckpt.pth
+task: cifar-10
+train:
+  batch_size: 64
+  beta_end: 0.02
+  beta_schedule: cosine
+  beta_start: 0.0001
+  eval_step: 10
+  global_step: 19200
+  log_step: 10
+  loss_type: mse
+  lr: 0.0001
+  num_diffusion_steps: 4000
+  pred: noise
+  save_step: 20
+  warm_up_step: 0
+  resume_from: ./run_cifar_ddimset/checkpoints/299
+  resume_step: 9600

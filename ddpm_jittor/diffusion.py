@@ -77,7 +77,7 @@ class GaussianDiffusion:
         if noise is None:
             noise = jit.randn_like(x_start)
         return (self._extract(self.sqrt_alphas_cumprod, t, x_start.shape) * x_start + 
-                self._extract(1. - self.sqrt_one_minus_alphas_cumprod, t, x_start.shape) * noise)
+                self._extract(self.sqrt_one_minus_alphas_cumprod, t, x_start.shape) * noise)
     
     def predict_start_from_noise(self, x_t, t, noise):
         return (

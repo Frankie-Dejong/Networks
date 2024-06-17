@@ -1,0 +1,33 @@
+task: celeba
+exp_name: run_celeba
+train:
+    batch_size: 16
+    global_step: 1600
+    num_diffusion_steps: 1000
+    beta_start: 0.0001
+    beta_end: 0.02
+    beta_schedule: linear
+    lr: 0.00002
+    log_step: 10
+    eval_step: 20
+    save_step: 20
+    warm_up_step: 5000
+    pred: noise
+    loss_type: mse
+model:
+    in_channels: 64
+    dropout: 0.0
+    image_resolution: 256
+    ch_mult:
+        - 1
+        - 1
+        - 2
+        - 2
+        - 4
+        - 4
+    num_res_blocks: 2
+    attn_resolutions: 
+        - 16
+data:
+    data_root: ./data/celeba_hq_256
+model_path: ./celeba_test_run/checkpoints/ckpt_at_epoch_61.pkl

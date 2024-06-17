@@ -1,0 +1,31 @@
+data:
+  data_root: ./data/mnist/
+exp_name: run_mnist
+model:
+  attn_resolutions:
+  - 16
+  ch_mult:
+  - 1
+  - 1
+  - 2
+  - 2
+  dropout: 0.1
+  image_resolution: 32
+  in_channels: 128
+  num_res_blocks: 2
+model_path: ./
+task: mnist
+train:
+  batch_size: 128
+  beta_end: 0.02
+  beta_schedule: linear
+  beta_start: 0.0001
+  eval_step: 10
+  global_step: 6400
+  log_step: 10
+  loss_type: mse
+  lr: 0.0001
+  num_diffusion_steps: 1000
+  pred: noise
+  save_step: 20
+  warm_up_step: 0
